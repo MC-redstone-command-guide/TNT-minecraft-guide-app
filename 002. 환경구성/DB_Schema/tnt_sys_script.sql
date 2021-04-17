@@ -48,7 +48,21 @@ CREATE UNIQUE INDEX `UNIQUE_INDEX_BOARD` ON `board` (
 
 
 -- CREATE INDEX
-CREATE INDEX `SEARCH_INDEX_BOARD` ON `board` (
+-- charset = utf8mb4 로 1char = 4bytes라 key length over로 일단 생성 보류
+/*CREATE INDEX `SEARCH_INDEX_BOARD` ON `board` (
 	`title`,
 	`hashtag`
-);
+);*/
+
+
+-- CREATE INITIAL DATA
+INSERT INTO `board_category` (`category`) VALUES ('레드스톤');
+INSERT INTO `board_category` (`category`) VALUES ('명령어');
+INSERT INTO `board_category` (`category`) VALUES ('특수 블럭 및 아이템');
+INSERT INTO `board_category` (`category`) VALUES ('제작법');
+INSERT INTO `board_category` (`category`) VALUES ('인챈트');
+INSERT INTO `board_category` (`category`) VALUES ('양조');
+INSERT INTO `board_category` (`category`) VALUES ('공장');
+INSERT INTO `board_category` (`category`) VALUES ('용어 사전');
+INSERT INTO `board_category` (`category`) VALUES ('어플 가이드');
+
