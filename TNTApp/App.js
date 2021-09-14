@@ -9,6 +9,11 @@
 import React, {useEffect} from 'react';
 import SplashScreen from 'react-native-splash-screen';
 import type {Node} from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import 'react-native-gesture-handler';
+import Java from './componenets/menu/Java'; 
+import Index from './componenets/menu/Index';
+
 import {
   SafeAreaView,
   ScrollView,
@@ -19,33 +24,27 @@ import {
   View,
   Image
 } from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
 
-import Index from './componenets/index';
-
+const Stack = createStackNavigator();
 
 const App: () => Node = () => {
   
-
+  
   useEffect(() => {
     setTimeout(() => {
       SplashScreen.hide();
-    }, 2000);
+    }, 1200);
   }, []);
 
   return (
-    <View style={styles.baseText}>
-      <Text >
-        Index Page
-      </Text>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Index" component={Index} options={{headerShown : false}}/>
+        <Stack.Screen name="Java" component={Java} options={{headerShown : false}}/>
+      </Stack.Navigator>
+    </NavigationContainer>
         
   );
 };
