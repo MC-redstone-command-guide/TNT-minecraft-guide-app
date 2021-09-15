@@ -13,6 +13,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import 'react-native-gesture-handler';
 import Java from './componenets/menu/Java'; 
 import Index from './componenets/menu/Index';
+import Bedrock from './componenets/menu/Bedrock'
 
 import {
   SafeAreaView,
@@ -43,6 +44,7 @@ const App: () => Node = () => {
       <Stack.Navigator>
         <Stack.Screen name="Index" component={Index} options={{headerShown : false}}/>
         <Stack.Screen name="Java" component={Java} options={{headerShown : false}}/>
+        <Stack.Screen name="Bedrock" component={Bedrock} options={{headerShown : false}}/>
       </Stack.Navigator>
     </NavigationContainer>
         
