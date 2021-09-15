@@ -4,37 +4,41 @@ import { View, StyleSheet, Button, Text, TouchableOpacity, Image, Dimensions} fr
 
 const win = Dimensions.get('window');
 
-export default class Index extends Component{
-    constructor(props){
-        super(props);
-      }
+const Index = ({navigation}) =>{
     
-      render(){
-        return (
-        <View style={styles.container}>
-          <TouchableOpacity style={styles.button}>
-             <Image source={require('./../../assets/02.version/java.png')} style={styles.btnImg}/>
-          </TouchableOpacity>
-          
-          <TouchableOpacity style={styles.button}>
-             <Image source={require('./../../assets/02.version/bedrock.png')} style={styles.btnImg}/>
-          </TouchableOpacity>
-          </View>
-        )
-      }
+  return (
+  <View style={styles.container}>
+    <TouchableOpacity 
+      style={styles.button}
+      onPress={() => {navigation.navigate('Java')}} >
+        <Image source={require('./../../assets/02.version/java.png')} style={styles.btnImg}/>
+    </TouchableOpacity>
+    
+    <TouchableOpacity 
+      style={styles.button}
+      onPress={() => {navigation.navigate('Bedrock')}}>
+        <Image source={require('./../../assets/02.version/bedrock.png')} style={styles.btnImg}/>
+    </TouchableOpacity>
+    </View>
+  )
+      
 }
 
 const styles = StyleSheet.create({
     container: {
-        alignItems:'center',
-       paddingLeft :'25%'
+      flex: 1,
+      justifyContent : 'center',
+      alignContent : 'center'
+      
     },
     button: {
-
-        marginBottom: '-10%',
+      alignItems:'center',
+      marginBottom: '-10%',
     },
     btnImg: {
-        width: '60%',
-        resizeMode: 'contain'
+      width: '70%',
+      resizeMode: 'contain'
     }
 })
+
+export default Index;
