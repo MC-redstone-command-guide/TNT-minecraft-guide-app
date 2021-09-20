@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity, FlatList } from 'react-native';
 
 export default class Java extends Component {
     
@@ -11,7 +11,7 @@ export default class Java extends Component {
     }
 
     getMenus=()=>{
-        fetch('http://localhost:3000/version/cat/1')
+        fetch('http://18.188.251.115:3000/version/cat/1')
         .then(response => response.json())
         .then((items) => {
             this.setState({menus : items})
@@ -35,6 +35,26 @@ export default class Java extends Component {
                 onPress={this.getMenus}>
                     <Text> Click </Text>
                 </TouchableOpacity>
+
+                <FlatList
+                    data={this.state.dataSource}
+                    renderItem={({ item }) => (
+                        <View
+                        style={{
+                            flex: 1,
+                            flexDirection: 'column',
+                            margin: 1
+                        }}>
+                        <Image
+                            style={styles.imageThumbnail}
+                            source={{ uri: item.src }}
+                        />
+                        </View>
+                    )}
+                    //Setting the number of column
+                    numColumns={3}
+                    keyExtractor={(item, index) => index.toString()}
+                    />
                 
             </View>
         )
