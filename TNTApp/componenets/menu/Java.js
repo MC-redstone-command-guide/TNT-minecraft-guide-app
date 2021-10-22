@@ -1,6 +1,15 @@
-import React, {Component} from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, FlatList } from 'react-native';
+import React, {useState} from 'react';
+import { 
+    View, 
+    StyleSheet, 
+    Text, 
+    TouchableOpacity,
+    FlatList,
+    Dimensions
+} from 'react-native';
 
+
+/*
 export default class Java extends Component {
     
     constructor(props){
@@ -59,14 +68,69 @@ export default class Java extends Component {
             </View>
         )
     }
-    
 }
+*/
+
+
+
+const formatData = (data, numColumns) => {
+    const numberOfFullRows = Math.floor(data.length / numColumns);
+  
+    let numberOfElementsLastRow = data.length - (numberOfFullRows * numColumns);
+    while (numberOfElementsLastRow !== numColumns && numberOfElementsLastRow !== 0) {
+      data.push({ key: `blank-${numberOfElementsLastRow}`, empty: true });
+      numberOfElementsLastRow++;
+    }
+  
+    return data;
+};
+
+const Java = () => {
+
+   
+
+    getMenus=()=>{
+        fetch('http://18.188.251.115:3000/version/cat/1')
+        .then(response => response.json())
+        .then((items) => {
+            this.setState({menus : items})
+        })
+    }
+
+
+   return (
+        const {menus} = this.state
+
+        <FlatList
+            data={formatData(menus, numColumns)}
+            style={styles.container}
+            renderItem={this.renderItem}
+            numColumns={numColumns}
+      />
+   );
+};
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        marginVertical: 20,
+      },
+      item: {
+        backgroundColor: '#4D243D',
         alignItems: 'center',
         justifyContent: 'center',
-    }
-})
+        flex: 1,
+        margin: 1,
+        height: Dimensions.get('window').width / numColumns, // approximate a square
+      },
+      itemInvisible: {
+        backgroundColor: 'transparent',
+      },
+      itemText: {
+        color: '#fff',
+      },
+});
 
+
+
+export default Java;
